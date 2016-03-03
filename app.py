@@ -22,12 +22,6 @@ keywords = filter + blacklist
 
 twitter = Twython(app_key, app_secret, oauth_token, oauth_token_secret)
 
-
-
-#The obligatory first status update to test
-twitter.update_status(status="Hello world.")
-
-
 search_results = twitter.search(q=keywords, result_type="mixed", count=100)
 try:
     for tweet in search_results["statuses"]:
