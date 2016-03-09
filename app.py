@@ -16,7 +16,7 @@ RUN_EVERY_N_SECONDS = 60*30 # e.g. 60*5 = tweets every five minutes
 naughty_words = [" -RT"]
 good_words = ["%22adderall got me like%22", "%22vyvanse got me like%22", "%22vyvanse had me like%22", "%22adderall had me like%22", "%22TFW vyvanse%22", "%22TFW adderall%22"]
 filter = " OR ".join(good_words)
-blacklist = " -".join(naughty_words)
+blacklist = " ".join(naughty_words)
 keywords = filter + blacklist
 
 twitter = Twython(app_key, app_secret, oauth_token, oauth_token_secret)
