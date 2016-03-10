@@ -13,14 +13,15 @@ RUN_EVERY_N_SECONDS = 60*30 # e.g. 60*5 = tweets every five minutes
 
 
 
-blacklist = ["-RT"]
+naughty_words = ["exclude:retweets", "exclude:replies"]
 good_words = ["%22adderall got me like%22", "%22vyvanse got me like%22", "%22vyvanse had me like%22", "%22adderall had me like%22", "%22TFW vyvanse%22", "%22TFW adderall%22"]
 filter = " OR ".join(good_words)
+blacklist = " OR ".join(naughty_words)
 keywords = filter + blacklist
 
 twitter = Twython(app_key, app_secret, oauth_token, oauth_token_secret)
 
-search_results = twitter.search(q=keywords, count=10)
+search_results = twitter.search(q=keywords, count=30)
 try:
     for tweet in search_results["statuses"]:
         try:
